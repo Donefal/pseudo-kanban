@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Kanban Board</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg" href="kanban.svg">
+</head>
+<body data-bs-theme="dark">
+    <!-- START OF NAVBAR -->
+    <nav class="navbar bg-body-tertiary p-3 ps-4 mb-4">
+        <div class="container-fluid">
+            <h1 class="navbar-brand mb-0 flex-grow-1 ps-2"><b>PSEUDO KANBAN BOARD</b></h1>
+
+            <!-- Menu bar button -->
+            <button class="btn bg-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Menu bar -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel"><b>Settings</b></h5>
+        </div>
+        <div class="offcanvas-body pt-3">
+            <div class="canvas-body-container d-flex flex-column">
+                <button class="btn bg-secondary rounded-0 py-3 my-2" type="button" id="done-delete" data-bs-dismiss="offcanvas"> Delete Task in DONE </button>
+                <button class="btn bg-secondary rounded-0 py-3 my-2" type="button" id="all-task-delete" data-bs-dismiss="offcanvas"> Delete ALL TASK </button>
+                <p class="text-center mt-auto border-top pt-3">Created by <br> Pascalis Alvin Futari Ardi (2405582)</p>
+            </div>
+        </div>
+    </div>
+    <!-- END OF NAVBAR -->
+
+    <!-- START OF ADD TASK -->
+    <section class="add-task-section ps-4 mb-5">
+        <div class="container-fluid">
+            <form class="row">
+                <div class="col-11">
+                    <input type="text" class="form-control" id="inputNewTask" placeholder="Add Task Here">
+                </div>
+                <div class="col-1">
+                    <button type="submit" class="btn btn-secondary" id="addButton">ADD</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- END OF ADD TASK -->
+
+    <!-- START OF TASK LIST -->
+    <section class="task-list">
+        <div class="container-fluid">
+             <div class="row justify-content-around">
+                <!-- Task Continer: TODO -->
+                <div class="col-4">
+                    <div class="task-container bg-body-tertiary rounded-bottom-3 border border-secondary mx-4">
+                        <h1 class="task-category p-3 d-flex justify-content-center border-bottom border-secondary bg-danger"><b>TODO</b></h1>
+                        <div id="todo-list">
+                            <!-- <task-card> untuk TODO di input di sini -->
+                        </div>
+                    </div>
+                </div>
+                <!-- END OF Task Container: TODO -->
+
+                <!-- Task Continer: WORKING ON -->
+                <div class="col-4">
+                    <div class="task-container bg-body-tertiary rounded-bottom-3 border border-secondary mx-4">
+                        <h1 class="task-category p-3 d-flex justify-content-center border-bottom border-secondary bg-primary"><b>WORKING ON</b></h1>
+                        <div id="working-on-list">
+                            <!-- <task-card> untuk WORKING ON di input di sini -->
+                        </div>
+                    </div>
+                </div>
+                <!-- END OF Task Container: WORKING ON -->
+
+                <!-- Task Continer: DONE -->
+                <div class="col-4">
+                    <div class="task-container bg-body-tertiary rounded-bottom-3 border border-secondary mx-4">
+                        <h1 class="task-category p-3 d-flex justify-content-center border-bottom border-secondary bg-success"><b>DONE</b></h1>
+                        <div id="done-list">
+                            <!-- <task-card> untuk DONE di input di sini -->
+                        </div>
+                    </div>
+                </div>
+                <!-- END OF Task Container: DONE -->
+            </div>
+        </div>
+    </section>
+    <!-- END OF TASK LIST -->
+
+    <!-- Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
