@@ -10,7 +10,7 @@ This project is a form of experimentation of Javascript programming language in 
 - Custom HTML tags
 
 ## Demo
-![demo](https://github.com/user-attachments/assets/c288ddbb-5ad3-4eb0-a927-d88dadf85c0a)
+![readme asli asli](https://github.com/user-attachments/assets/6270118a-48f7-42c7-820e-cc46a71ad231)
 
 ## Potential Improvement
 This is some feature that comes to my mind but don't really need implement for the sake of an assignment. This improvement actually may not be made in the future, but great to be noticed. The potential feature improvement is as follow:
