@@ -1,3 +1,4 @@
+// Enum untuk status tugas
 const Status = {
     Todo: "todo",
     WorkingOn: "workingOn",
@@ -6,12 +7,6 @@ const Status = {
 
 // Array untuk penyimpanan tasks
 let tasks = [];
-
-// Reference ke element di DOM
-const addButton = document.getElementById("addButton");
-const input = document.getElementById("inputNewTask");
-const deleteDoneButton = document.getElementById("done-delete");
-const deleteAllButton = document.getElementById("all-task-delete");
 
 // -------------------------------------------------------------------------------- 
 // Persistance
@@ -27,6 +22,10 @@ function loadTasks() {
 function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
+// -------------------------------------------------------------------------------- 
+// Render Task
+// -------------------------------------------------------------------------------- 
 
 // Render <task-card> untuk setiap kategori status
 function render() {
@@ -153,6 +152,7 @@ function deleteAllTask() {
     Attribute:
         - task-name: untuk nama tugas (ENUM Status: Todo, WorkingOn, Done)
         - task-id: untuk keperluan managemen data (dalam bentuk date.now)
+        - task-status: untuk mengganti warna tombol
 */
 class TaskCard extends HTMLElement {
     connectedCallback(){
@@ -223,6 +223,7 @@ class TaskCard extends HTMLElement {
             deleteTask(taskID);
         });
 
+        // Event listener untuk memunculkan Modal (edit task) + inisialisasi value
         const taskModal = this.querySelector(".modal");
         taskModal.addEventListener("show.bs.modal", (event) => {
             const taskText = event.relatedTarget;
@@ -232,6 +233,7 @@ class TaskCard extends HTMLElement {
             modalBodyInput.value = currentValue
         });
 
+        // Event listener untuk save button di modal
         const inputEdit = this.querySelector(".input-edit");
         this.querySelector(".save-task").addEventListener("click", () => {
             editTask(taskID, inputEdit.value);
@@ -245,6 +247,8 @@ customElements.define("task-card", TaskCard);
 // -------------------------------------------------------------------------------- 
 
 // Event listener untuk tombol add task
+const addButton = document.getElementById("addButton");
+const input = document.getElementById("inputNewTask");
 addButton.addEventListener("click", () => {
     addTask(input.value);
     console.log(input.value);
@@ -260,13 +264,17 @@ input.addEventListener("keydown", (event) => {
     }
 });
 
+// Event listener offcanvas
+const deleteDoneButton = document.getElementById("done-delete");
 deleteDoneButton.addEventListener("click", () => {
     deleteDone();
 });
 
+const deleteAllButton = document.getElementById("all-task-delete");
 deleteAllButton.addEventListener("click", () => {
     deleteAllTask();
 });
 
+// Inisialisasi
 loadTasks();
 render();
